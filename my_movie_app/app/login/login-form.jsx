@@ -7,10 +7,34 @@ import Image from "next/image";
 export default function loginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setpasswordError] = useState("");
+
+  const validateForm = () => {
+    if (!email) {
+      setEmailError("Email is required!");
+      return false;
+    } else {
+      setEmailError("");
+    }
+    if (!password) {
+      setpasswordError("Password is required!");
+      return false;
+    } else {
+      setpasswordError("");
+    }
+
+    return true;
+  };
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", { email: email, password: password });
+
+    const isValid = validateForm();
+
+    if (isValid) {
+      console.log("Form Data:", { email: email, password: password });
+    }
   };
 
   return (
@@ -45,6 +69,11 @@ export default function loginForm() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 block p-2.5 w-full h-10 rounded-lg focus:ring-1  focus:ring-blue-200"
                 placeholder="yourname@gmail.com"
               />
+              {emailError && (
+                <div className="text-red-600 text-xs mt-2 ml-1">
+                  {emailError}
+                </div>
+              )}
             </div>
 
             {/* password section */}
@@ -64,6 +93,11 @@ export default function loginForm() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 block p-2.5 w-full h-10 rounded-lg focus:ring-1  focus:ring-blue-200"
                 placeholder="••••••••"
               />
+              {passwordError && (
+                <div className="text-red-600 text-xs mt-2 ml-1">
+                  {passwordError}
+                </div>
+              )}
             </div>
 
             {/* remeber Me */}

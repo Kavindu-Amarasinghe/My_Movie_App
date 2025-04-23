@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import LoginForm from "./login-form";
 
@@ -7,9 +7,9 @@ import LoginForm from "./login-form";
 export default function LoginPage() {
   return (
     <div
-      className="flex flex-col justify-center items-center min-h-screen text-black"
+      className="flex flex-col justify-center items-center min-h-screen text-black bg-cover bg-center"
       style={{
-        backgroundImage: "url('/logingbg.jpg')",
+        backgroundImage: "url('/bglogin.jpg')",
       }}
     >
       <LoginForm />
